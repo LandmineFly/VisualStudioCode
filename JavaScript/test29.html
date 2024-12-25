@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var asoul = {
+				memberName: "asoul",
+				member: ["diana", "bella", "ava", "eileen"],
+				[Symbol.iterator]() {
+					//返回一个迭代器对象
+					return {
+						length: this.member.length,
+						index: 0,
+						//迭代器对象内应该有一个next()方法
+						//迭代器对象会多次调用next()来进行遍历
+						//直到next()返回了done值为true的对象，表示遍历结束
+						next() {
+							if (this.index < this.length) {
+								//遍历结束前，返回的对象中，done值为false
+								//value值就是当前遍历的数据
+								return {
+									value: asoul.member[this.index++],
+									done: false,
+								};
+							}
+							//遍历结束时，返回的对象中，
+							//done值为true，value值为undefined
+							return {
+								value: undefined,
+								done: true,
+							};
+						},
+					};
+				},
+			};
+			for (var i of asoul) {
+				console.log(i);
+                //diana bella ava eileen 
+			}
+		</script>
+	</body>
+</html>

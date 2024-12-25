@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="javascript:;">1</a>
+		<a href="javascript:;">2</a>
+		<a href="javascript:;">3</a>
+		<script>
+			window.onload = function () 
+            {
+				//获取所有超链接
+				var allA = document.getElementsByTagName("a");
+				//为每个超链接都绑定一个单击响应函数
+				for (var i = 0; i < allA.length; i++) 
+                {
+					/* 
+                     * for循环会在页面加载完成之后立即执行
+                     * 而响应函数会在超链接被点击时才执行
+                     * 当响应函数执行时，for循环早己执行完毕
+                     * 因此响应函数执行时，i恒等于3
+                     * allA.length=2，所以allA[3] = undefined
+                     * 所以allA[i] == this永远返回false
+                     */
+					allA[i].onclick = function () 
+                    {
+						console.log(allA[i] == this); //false
+					};
+
+                    /*
+                     * 要解决这个问题，可以先将下标作为属性分别存储在各个元素对象中
+                     * 然后在单击响应函数中就可以通过对应元素对象得到它的数组下标
+                     */
+                    allA[i].index = i;
+                    allA[i].onclick = function()
+                    {
+                        console.log(allA[this.index] == this); //true
+                    };
+				}
+			};
+		</script>
+	</body>
+</html>

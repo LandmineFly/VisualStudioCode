@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var arr1 = [1, 2, [3, [4, 5]]];
+			var arr2 = arr1.flat(2);
+			console.log(arr2); //[1,2,3,4,5]
+			var arr3 = arr1.flat(1);
+			console.log(arr3); //[1,2,3,[4,5]]
+
+			var arr1 = [1, 2, [3], [4, 5]];
+			var arr2 = arr1.flatMap((item) => {
+				if (typeof item == "number") {
+					return item;
+				} else if (item instanceof Array) {
+					var len = item.length;
+					for (var i = 0; i < len; i++) {
+						item[i] *= 10 ** len;
+					}
+					return item;
+				}
+			});
+            //执行完回调函数时应该是 [1,2,[30],[400,500]]
+            //然后再进行二维展开，得到 [1,2,30,400,500]
+			console.log(arr2); //[1,2,30,400,500]
+		</script>
+	</body>
+</html>

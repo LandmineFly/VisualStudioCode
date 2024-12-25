@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var a = 10;
+			var a = 10; //√
+
+			let a = 10;
+			let a = 10; //×
+		</script>
+
+		<a href="javascript:;">1</a>
+		<a href="javascript:;">2</a>
+		<a href="javascript:;">3</a>
+		<script>
+			window.onload = function () {
+				//获取所有超链接
+				var allA = document.getElementsByTagName("a");
+				//为每个超链接都绑定一个单击响应函数
+				for (let i = 0; i < allA.length; i++) {
+					//改用 let 声明 i 后，每次循环之间的i是相互独立的
+					//因此循环执行结束后，每次循环中的i就都是对应元素对象的下标
+					//使用 var 声明时就像：
+					//{ var i = 0; all[0].onclick = ... } { var i = 1; all[1].onclick = ... } ...
+					//这些 i 其实都是同一个 i，因此在循环结束后，这些 i 的值都是循环结束时的 i 值 -- 4
+					//改用 let 声明时就像：
+					//{ let i = 0; all[0].onclick = ... } { let i = 1; all[1].onclick = ... } ...
+					//这些 i 之间相互独立，因此在循环结束后，这些 i 的值都是各自的值，不会改变
+					allA[i].onclick = function () {
+						console.log(allA[i] == this); //true
+					};
+				}
+			};
+		</script>
+
+		<script>
+            const b = {name:"diana"};
+            b.name = "ava"; //√
+            b = {name:"bella"}; //×
+        </script>
+	</body>
+</html>

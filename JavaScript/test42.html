@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var str = '<a href="https://www.baidu.com/">Baidu</a>';
+			//(.*)为一个分组，(Baidu)也为一个分组
+			var reg = /href="(.*)">(Baidu)/;
+			var result = reg.exec(str);
+			//result[0]就是匹配文本本身
+			console.log(result[0]); //href="https://www.baidu.com/">Baidu
+			//result[1]就是匹配文本中的第一个分组内容，以此类推
+			console.log(result[1]); //https://www.baidu.com/
+			console.log(result[2]); //Baidu
+
+			var str = "123abc";
+			var reg = /123(?=(abc)|(456))/;
+			var result = reg.exec(str);
+			console.log(result[0]);
+
+            var str = "123abc";
+            //贪婪模式，匹配尽量多的字符
+			var reg = /\d+/;
+			var result = reg.exec(str);
+			console.log(result[0]); // 123
+            //懒惰模式，匹配尽量少的字符
+			var reg = /\d+?/;
+			var result = reg.exec(str);
+			console.log(result[0]); // 1
+            
+		</script>
+	</body>
+</html>

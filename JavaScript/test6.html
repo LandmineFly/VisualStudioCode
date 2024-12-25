@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+        <style>
+            #box1
+            {
+                height: 200px;
+                width: 200px;
+                background-color: #6cf;
+            }
+            #box2
+            {
+                height: 100px;
+                width: 100px;
+                background-color: darkcyan;
+            }
+        </style>
+        <!-- <script>
+            window.onload = function()
+            {
+                var box1 = document.getElementById("box1");
+                var box2 = document.getElementById("box2");
+                var html = document.getElementsByTagName("html")[0];
+                html.addEventListener("click",function(e)
+                {
+                    console.log("我是html中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 html
+                    //e.target 指向 #box2
+                },true)
+                box1.addEventListener("click",function(e)
+                {
+                    console.log("我是box1中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 #box1
+                    //e.target 指向 #box2
+                },true)
+                box2.addEventListener("click",function(e)
+                {
+                    console.log("我是box2中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 #box2
+                    //e.target 指向 #box2
+                },true)
+                box2.addEventListener("click",function(e)
+                {
+                    console.log("我是box2中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 #box2
+                    //e.target 指向 #box2
+                },false)
+                box1.addEventListener("click",function(e)
+                {
+                    console.log("我是box1中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 #box1
+                    //e.target 指向 #box2
+                },false)
+                html.addEventListener("click",function(e)
+                {
+                    console.log("我是html中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 html
+                    //e.target 指向 #box2
+                },false)
+                //如果更改上述代码的顺序，事件处理器的执行顺序也不会更改
+            }
+        </script> -->
+	</head>
+	<body>
+        <div id="box1">
+            <div id="box2"></div>
+        </div>
+        <script>
+             var box1 = document.getElementById("box1");
+                var box2 = document.getElementById("box2");
+                var html = document.getElementsByTagName("html")[0];
+                html.addEventListener("click",function(e)
+                {
+                    console.log("我是html中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 html
+                    //e.target 指向 #box2
+                },true)
+                box1.addEventListener("click",function(e)
+                {
+                    console.log("我是box1中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 #box1
+                    //e.target 指向 #box2
+                },true)
+                box2.addEventListener("click",function(e)
+                {
+                    console.log("我是box2中捕获过程的事件处理器")
+                    //this === e.currentTarget 指向 #box2
+                    //e.target 指向 #box2
+                },true)
+                box2.addEventListener("click",function(e)
+                {
+                    console.log("我是box2中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 #box2
+                    //e.target 指向 #box2
+                },false)
+                box1.addEventListener("click",function(e)
+                {
+                    console.log("我是box1中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 #box1
+                    //e.target 指向 #box2
+                },false)
+                html.addEventListener("click",function(e)
+                {
+                    console.log("我是html中冒泡过程的事件处理器")
+                    //this === e.currentTarget 指向 html
+                    //e.target 指向 #box2
+                },false)
+                //如果更改上述代码的顺序，事件处理器的执行顺序也不会更改
+        </script>
+    </body>
+</html>

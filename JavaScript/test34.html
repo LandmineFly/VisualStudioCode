@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// ES5写法
+			function Person1(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			Person1.prototype.eat = function () {
+				console.log("吃饭1");
+			};
+
+			var p1 = new Person1("Diana", 18);
+			console.log(p1.name, p1.age); //Diana 18
+			p1.eat(); //吃饭
+
+            
+			// ES6写法，与上面完全等价
+			class Person2 {
+				//构造函数名规定是constructor，不能更改
+				//如果没有显式声明构造函数，则默认提供一个空的构造函数
+				//即 constructor(){}
+				constructor(name, age) {
+					this.name = name;
+					this.age = age;
+				}
+				//这里的eat()实际声明在了Person2的原型对象中
+				eat() {
+					console.log("吃饭2");
+				}
+			}
+
+			var p2 = new Person2("Bella", 19);
+			console.log(p2.name, p2.age); //Diana 18
+			p2.eat(); //吃饭
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function fun1([args1, args2]) {
+				console.log(args1, args2);
+			}
+			var arr = ["diana", "ava", "bella"];
+			fun1(arr); // diana ava
+
+			function fun2({name, age}) {
+				console.log(name, age);
+			}
+			var member = { name: "diana", age: 18 };
+			fun2(member); //diana 18
+		</script>
+	</body>
+</html>

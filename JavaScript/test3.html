@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+        <ul id="ul">
+            <li>111</li>
+            <li id="target">333</li>
+        </ul>
+        <!-- 将<li>222<li>插在<li id="target">333</li>之前 -->
+        <script>
+            var newLi = document.createElement("li");
+            newLi.innerText = "222";
+            /* 传统方法
+             * var text = document.createTextNode("222");
+             * newLi.appendChild(text);
+             */
+            var target = document.getElementById("target");
+            target.parentNode.insertBefore(newLi,target);
+        </script>
+    </body>
+</html>

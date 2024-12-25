@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建一个空集合
+        var s1 = new Set();
+
+        //添加元素(不会重复添加已有元素)
+        s1.add(123);
+        s1.add("Diana");
+        console.log(s1);
+        
+        //元素个数
+        console.log(s1.size); //2
+
+        //判断是否有指定元素
+        console.log(s1.has("Diana")); //true
+        console.log(s1.has("Bella")); //false
+
+        //删除指定元素
+        s1.delete("Diana");
+
+        //清空集合
+        s1.clear();
+
+        //在创建集合时，可以传入一个数组，以此将数组的元素添加到集合中
+        //会自动过滤数组中的相同元素
+        var s2 = new Set([234,"Bella"]);
+    </script>
+</body>
+</html>

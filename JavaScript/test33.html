@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var promise = new Promise((resolve, reject) => {
+				setTimeout(() => {
+                    //转为成功态，因此执行回调函数funcResolve，并将"111"传递给它
+					resolve("111");
+				}, 1000);
+			});
+
+			promise
+				.then(
+                    //执行该回调函数
+					(value) => {
+						console.log(value); //"111"
+                        //回调函数返回的promise为失败态，所以then()返回的promise对象也是失败态
+                        //由于链式调用，后者的回调函数funcReject会被执行，而且前者传入的"222"也会传递给它
+						return new Promise((resolve, reject) => {
+							setTimeout(() => {
+								reject("222");
+							}, 1000);
+						});
+					},
+					(reason) => {}
+				)
+                //链式调用
+				.then(
+					(value) => {},
+                    //执行该回调函数
+					(reason) => {
+						console.log(reason); //"222"
+					}
+				);
+		</script>
+	</body>
+</html>

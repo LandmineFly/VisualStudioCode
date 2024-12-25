@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#box1 {
+				height: 200px;
+				width: 200px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<script>
+            //点击box1两秒后，将其背景颜色改为天依蓝
+			let box1 = document.getElementById("box1");
+            //该操作类似于box1.onclick = function(){...}
+            //因此该函数（记为fun1）实际上是box1的方法，实际上也是通过box1来调用的，也就是说fun1的this是box1
+            //不能将fun1改为箭头函数，因为fun1是在全局作用域中声明的
+            //改后fun1的this会指向window，同时导致fun2的this也指向window
+			box1.addEventListener("click", function () {
+                
+                console.log(this)
+                //该函数（记为fun2）是在函数作用域fun1中声明的，因此fun2的this值与fun1的this值相同
+                //不能将fun2改为普通函数，因为fun2是直接调用的，改后fun2的this会指向window
+				setTimeout(() => {
+                    //必须保证this指向box1
+					this.style.backgroundColor = "#6cf";
+				}, 1000);
+			});
+		</script>
+	</body>
+</html>

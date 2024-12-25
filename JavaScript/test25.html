@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fun1(args1=0, args2=0)
+        {
+            return args1 + args2;
+        }
+        //也可以用在箭头函数中
+        var fun2 = (args1=0, args2=0) => args1 + args2;
+        console.log(fun1(),fun2(1)); // 0 1
+    </script>
+
+    <script>
+        function fun3({name,age,team="asoul"})
+        {
+            console.log(name,age,team)
+        }
+        var member = {name:"diana",age:18}
+        fun3(member); //diana 18 asoul
+    </script>
+</body>
+</html>

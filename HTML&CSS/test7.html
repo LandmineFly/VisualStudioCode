@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>测试六</title>
+
+        <!-- 对于.box1,红色为边框,蓝色为内边距,黄色为内容区 -->
+        <style>
+            .box1
+            {
+                /* .box1的内容区大小 */
+                height: 200px;
+                width: 200px;
+                /* 背景默认会延伸到边框外延,但是背景被边框覆盖 */
+                background-color: #66ccff;
+                padding:50px;
+                border:#ff0000 5px solid;
+            }
+            .inner
+            {
+                /* .inner的盒子大小就是.box1的内容区大小 */
+                height: 100%;
+                width: 100%;
+                /* .inner的背景会完整地覆盖.box1的内容区 */
+                background-color: #ffff00;
+            }
+        </style>
+	</head>
+
+	<body>
+        <div class="box1">
+            <!-- 造一个.box1的子元素.inner -->
+            <div class="inner"></div>
+        </div>
+    </body>
+</html>

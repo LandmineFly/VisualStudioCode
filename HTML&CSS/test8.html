@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>测试八</title>
+
+        <style>
+            .box1
+            {
+                width: 100px;
+                height: 100px;
+                background-color: #66ccff;
+
+                /* 方式一:分别设置 */
+                border-top: 5px red solid;
+                border-left: 5px red solid;
+                border-bottom: 5px red solid;
+                border-right: 5px red dashed;
+
+                /* 方式二 */
+                /* 先整体设置 */
+                border:5px red solid;
+                /* 再单独设置,覆盖掉整体设置 */
+                border-right:5px red dashed;
+
+                float: right;
+            }
+
+            .box2
+            {
+                height: 100px;
+                width: 100px;
+                background-color: gold;
+                clear: both;
+            }
+        </style>
+	</head>
+
+	<body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 函数名 = (形参列表) => {函数体}
+			var fun1 = (args1, args2) => {
+				//do something
+			};
+
+			var plusOne = (num) => {
+				return num + 1;
+			};
+			//等价于
+			var plusOne = (num) => num + 1;
+			console.log(plusOne(10086)); //10087
+		</script>
+		<script>
+			//该函数fun4在全局作用域中声明
+			//因此该函数的this永远指向window
+			var fun4 = () => {
+				console.log(this);
+			};
+			var obj = { fun4 };
+			//就算把它放到对象obj内并通过obj来调用也是如此
+			obj.fun4(); //window，如果fun4不是箭头函数，应该输出obj
+			//就算使用apply()调用也是如此
+			fun4.apply(obj); //window，如果fun4不是箭头函数，应该输出obj
+
+			//该函数fun6在函数作用域fun5中声明
+			//因此该函数的this值永远与该函数声明时fun5的this值相同
+			var obj2 = {
+				fun5() {
+					var fun6 = () => console.log(this);
+					return fun6;
+				},
+			};
+			//fun6声明时，fun5的this值是obj2，因此fun6的this永远指向obj2
+			var fun6 = obj2.fun5();
+			//就算把它拿出来直接调用也是如此
+			fun6(); //obj2，如果fun6不是箭头函数，应该输出window
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 = [1,2,2,3];
+        var arr2 = [2,3,3,4];
+        
+        //Set是可迭代的，因此可以使用...扩展运算符
+        //1.数组去重
+        var temp = [...new Set(arr1)]
+        console.log(temp); //[1,2,3]
+
+        //2.取交集
+        var temp = [...new Set(arr1)].filter(item => new Set(arr2).has(item));
+        console.log(temp); //[2,3]
+
+        //3.取并集
+        var temp = [...new Set([...arr1, ...arr2])];
+        console.log(temp); //[1,2,3,4]
+
+        //4.取差集
+        var temp = [...new Set(arr1)].filter(item => !(new Set(arr2).has(item)));
+        console.log(temp); //[1]
+    </script>
+</body>
+</html>

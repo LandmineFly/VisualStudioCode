@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+        <script src="./chart.js"></script>
+		<script>
+            window.onload = function(){
+			const ctx = document.getElementById("myChart");
+			const data = {
+				labels: ["red", "Blue", "Yellow"],
+				datasets: [
+					{
+						label: "环形图实例",
+						data: [300, 50, 100],
+						backgroundColor: [
+							"rgb(255, 99, 132)",
+							"rgb(54, 162, 235)",
+							"rgb(255, 205, 86)",
+						],
+						hoverOffset: 10,
+					},
+				],
+			};
+			const config = {
+				type: "doughnut",
+				data: data,
+				options: {
+					responsive: true, // 设置图表为响应式，根据屏幕窗口变化而变化
+					maintainAspectRatio: false, // 保持图表原有比例
+					scales: {
+						yAxes: [
+							{
+								ticks: {
+									beginAtZero: true,
+								},
+							},
+						],
+					},
+				},
+			};
+			const myChart = new Chart(ctx, config);
+        }
+		</script>
+	</head>
+	<body>
+		<canvas id="myChart" width="500" height="500"></canvas>
+	</body>
+</html>

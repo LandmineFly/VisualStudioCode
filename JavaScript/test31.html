@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function* generator() {
+				let arg1 = yield "111";
+
+				console.log(arg1); //undefined
+				let arg2 = yield "222";
+
+				console.log(arg2); //undefined
+				let arg3 = yield "333";
+
+				console.log(arg3); //undefined
+			}
+
+            //注意：传入的不是生成器函数，而是它的迭代器
+			for (let i of generator()) {
+				console.log(i);
+                //i就是每次调用next()的返回对象中的value值
+			}
+		</script>
+	</body>
+</html>

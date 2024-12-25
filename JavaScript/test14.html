@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//该JSON字符串保存了一个对象，该对象的属性teamMember的值是一个数组，该数组的元素都是对象
+			var json1 = '{"teamName":"Asoul","teamMember":[{"name":"Diana","age":16},{"name":"Ava","age":17}]}';
+
+			//该JSON字符串保存了一个数组，该数组的元素的数据类型有字符串、数值、对象
+			var json2 = '["Hello",114514,{"name":"Bella","age":18}]';
+
+			var js1 = JSON.parse(json2);
+			console.log(js1[1]);
+
+			var js2 = {name:"President Xi",age:"65"}
+
+			console.log(JSON.stringify(js2));
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 逐步从1显示到100 -->
+		<div id="box1">1</div>
+		<button id="recount">开始/重新计数</button>
+		<script>
+				var box1 = document.getElementById("box1");
+				var recount = document.getElementById("recount");
+                //还有一种方法，无需声明全局变量timer
+				recount.addEventListener("click", function () {
+				    num = 0;
+				    clearInterval(box1.timer);
+                    //而是将timer作为box1的属性保存
+                    //这样就不用担心timer被销毁的问题了
+				    box1.timer = setInterval(function () {
+				        box1.innerText = ++num;
+						if (num == 100) {
+							clearInterval(timer);
+						}
+					}, 100);
+				});
+		</script>
+
+        <!-- <script>
+            //循环执行完后，timer保存的只有最新创建的定时器
+            //之前创建的9个定时器都因为编号丢失，找不到了
+            for(var i = 0; i<10; i++)
+            {
+                var timer = setInterval(function()
+                {
+                    console.log("111");
+                },1000);
+            }
+        </script> -->
+
+        <script>
+            setInterval(function()
+            {
+                console.log("111");
+                setInterval(function()
+                {
+                    console.log("222");
+                })
+            },100)
+        </script>
+	</body>
+</html>

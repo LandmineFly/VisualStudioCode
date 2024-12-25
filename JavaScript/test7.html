@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+        <ul id="ul">
+            <li>
+                <a href="javascript:;">超链接1</a>
+            </li>
+            <li>
+                <a href="javascript:;">超链接1</a>
+            </li>
+            <li>
+                <a href="javascript:;">超链接1</a>
+            </li>
+            <li>
+                <span>文字</span>
+            </li>
+        </ul>
+        <script>
+            var ul = document.getElementById("ul");
+            ul.addEventListener("click",function(e)
+            {
+                e.preventDefault();
+                //只有在点击超链接时，才显示该消息
+                if(e.target.nodeName == "A")
+                {
+                    alert("我是超链接")
+                }
+            },false)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+		<style>
+			body {
+				background-color: #010409;
+				color: #f0f6fc;
+				background: url(./resource/1826248-20191014103007615-1158844188.png);
+				min-width: 1500px;
+				user-select: none;
+			}
+
+			.headerWrapper {
+				position: relative;
+				height: 100px;
+				background-color: rgba(22, 27, 34, 0.6);
+			}
+
+			.header {
+				font-size: 30px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+			}
+
+			.navWrapper {
+				height: 50px;
+				background-color: rgba(13, 17, 23, 0.6);
+			}
+
+			.nav {
+				padding-left: 20%;
+				padding-right: 20%;
+			}
+
+			.navItem {
+				float: left;
+				width: 20%;
+				position: relative;
+			}
+
+			.navItem::after {
+				content: "|";
+				font-size: 20px;
+				position: absolute;
+				top: 15px;
+			}
+
+			.navItemLink {
+				display: block;
+				text-align: center;
+				color: #f0f6fc;
+				font-size: 18px;
+				text-decoration: none;
+				line-height: 50px;
+			}
+
+			.blockWrapper {
+				position: relative;
+				height: 800px;
+			}
+
+			.block {
+				position: absolute;
+				height: 500px;
+				width: 800px;
+				background-color: rgba(13, 17, 23, 0.5);
+				top: 70px;
+				left: 50%;
+				transform: translateX(-50%);
+				border-radius: 10px;
+				border: #575b66 dashed 3px;
+			}
+
+			.icon {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateX(-50%) translateY(-50%);
+			}
+
+			.char {
+				position: absolute;
+				font-size: 18px;
+				left: 50%;
+				top: 65%;
+				transform: translateX(-50%);
+			}
+
+			.btn {
+				position: absolute;
+				height: 50px;
+				width: 500px;
+				left: 50%;
+				top: 75%;
+				transform: translateX(-50%);
+				border-radius: 15px;
+				font-size: 20px;
+				line-height: 50px;
+				background-color: rgba(13, 17, 23, 0.5);
+				transition: all 0.2s;
+			}
+
+			.btn:hover {
+				background-color: rgba(13, 17, 23, 0.9);
+			}
+
+			.btn:active {
+				height: 45px;
+				width: 450px;
+				top: 75.3%;
+				line-height: 45px;
+				font-size: 18px;
+			}
+
+			.btn p {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="headerWrapper">
+			<p class="header">
+				基 于 A B - I T 方 法 的 图 像 对 抗 样 本 生 成 系 统
+			</p>
+		</div>
+		<div class="navWrapper">
+			<ul class="nav">
+				<li class="navItem">
+					<a href="javascript:;" class="navItemLink">测试模型选择</a>
+				</li>
+				<li class="navItem">
+					<a href="javascript:;" class="navItemLink">图像输入</a>
+				</li>
+				<li class="navItem">
+					<a href="javascript:;" class="navItemLink">图像输出</a>
+				</li>
+				<li class="navItem">
+					<a href="javascript:;" class="navItemLink">数据可视化</a>
+				</li>
+				<li class="navItem">
+					<a href="javascript:;" class="navItemLink">关于产品</a>
+				</li>
+			</ul>
+		</div>
+		<div class="blockWrapper">
+			<div class="block">
+				<div class="icon">
+					<a href="javascript:;">
+						<svg
+							t="1682607829869"
+							class="icon"
+							viewBox="0 0 1024 1024"
+							version="1.1"
+							xmlns="http://www.w3.org/2000/svg"
+							p-id="2742"
+							width="100"
+						>
+							<path
+								d="M512 958.016611c-119.648434 0-232.1288-46.367961-316.736783-130.559656-84.640667-84.255342-131.263217-196.255772-131.263217-315.455235 0-119.168499 46.624271-231.199892 131.232254-315.424271 84.607983-84.191695 197.088348-130.559656 316.736783-130.559656s232.1288 46.367961 316.704099 130.559656c84.67163 84.224378 131.263217 196.255772 131.263217 315.391587 0.032684 119.199462-46.591587 231.232576-131.263217 315.455235C744.1288 911.615966 631.648434 958.016611 512 958.016611zM512 129.983389c-102.623626 0-199.071738 39.743475-271.583282 111.936783-72.480581 72.12794-112.416718 168.063432-112.416718 270.079828s39.903454 197.951888 112.384034 270.047144c72.511544 72.191587 168.959656 111.936783 271.583282 111.936783 102.592662 0 199.071738-39.743475 271.583282-111.936783 72.480581-72.160624 112.416718-168.063432 112.384034-270.079828 0-102.016396-39.903454-197.919204-112.384034-270.016181C711.071738 169.759548 614.592662 129.983389 512 129.983389z"
+								fill="#575B66"
+								p-id="2743"
+							></path>
+							<path
+								d="M736.00086 480.00086 544.00086 480.00086 544.00086 288.00086c0-17.664722-14.336138-32.00086-32.00086-32.00086s-32.00086 14.336138-32.00086 32.00086l0 192L288.00086 480.00086c-17.664722 0-32.00086 14.336138-32.00086 32.00086s14.336138 32.00086 32.00086 32.00086l192 0 0 192c0 17.695686 14.336138 32.00086 32.00086 32.00086s32.00086-14.303454 32.00086-32.00086L544.00258 544.00086l192 0c17.695686 0 32.00086-14.336138 32.00086-32.00086S753.696546 480.00086 736.00086 480.00086z"
+								fill="#575B66"
+								p-id="2744"
+							></path>
+						</svg>
+					</a>
+				</div>
+				<div class="char">请导入数据集</div>
+			</div>
+			<div class="btn">
+				<p>开始生成</p>
+			</div>
+		</div>
+	</body>
+</html>

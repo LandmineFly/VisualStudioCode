@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+        <style>
+            html
+            {
+                /* --变量名:变量值 */
+                --h:100px;
+                --w:100px;
+                --back-color:#6cf;
+            }
+            body
+            {
+                height: 500px;
+                width: 500px;
+            }
+            .box1
+            {
+                /* var(--变量名) */
+
+                /* 普通用法 */
+                height: calc(100px - 50px);
+                /* calc()中使用变量 */
+                width: calc(var(--w) - 50px);
+                /* 因为%最终也会被计算成px，因此可以与px混合计算 */
+                border-radius: calc(50% - 10px);
+                /* calc()的嵌套使用 */
+                margin: calc(calc(100px - 20px) - 20px);
+                background-color: var(--back-color);
+            }
+        </style>
+	</head>
+	<body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </body>
+</html>

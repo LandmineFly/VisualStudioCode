@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var [name1] = ["diana", "ava"];
+			console.log(name1); //diana ava
+		</script>
+
+		<script>
+			var { age, name } = { name: "Diana", age: 19 };
+			console.log(age, name); //19 diana
+		</script>
+
+		<script>
+			var string1 = "123" + "456";
+			var string2 = `123
+                            456`;
+
+			var string3 = "爱莉希雅";
+			var string4 = `${string3}说：以我为始，以我为终`;
+			console.log(string4); //爱莉希雅说：以我为始，以我为终
+		</script>
+
+		<script>
+			let name = "ava";
+			let show = function () {
+				return "向晚";
+			};
+			let member = {
+                //原本的写法是 name: name
+				name,
+				show,
+			};
+			console.log(member.name, member.show()); //ava 向晚
+
+			let member1 = {
+				name: "bella",
+                //原本的写法是 show: function(){...}
+				show() {
+					return "贝拉";
+				},
+			};
+			console.log(member1.name, member1.show()); //bella 贝拉
+		</script>
+	</body>
+</html>

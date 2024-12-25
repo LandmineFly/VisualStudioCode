@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var promise = new Promise((resolve, reject) => {
+				resolve();
+			});
+
+			var newPromise = promise.then(
+				(value) => {
+					//注意：这里返回的promise和newPromise是两个不同对象
+					//返回的promise是失败态，因此newPromise也是失败态
+					//且返回的promise中传入reject的"111"被传递到了newPromise的回调函数funcReject中
+					return new Promise((resolve, reject) => {
+						reject("111");
+					});
+				},
+				(reason) => {}
+			);
+
+			var newNewPromise = newPromise.then(
+				(value) => {},
+				//"111"被传递到了这里
+				(reason) => {
+					console.log(reason); //"111"
+					//返回了"222"，因此newNewPromise是成功态
+					//且返回值的"222"被传递到了newNewPromise的回调函数funcResolve中
+					return "222";
+				}
+			);
+
+			//也会返回一个promise对象，这里就不再演示了
+			newNewPromise.then(
+				//"222"被传递到了这里
+				(value) => {
+					console.log(value); //"222"
+				},
+				(reason) => {}
+			);
+
+			var promise = new Promise((resolve, reject) => {
+				resolve("111");
+			});
+
+			promise
+				.then(
+					(value) => {
+						console.log(value); //"111"
+						return "222";
+					},
+					(reason) => {}
+				)
+				.then(
+					(value) => {
+						console.log(value); //"222"
+						return new Promise((resolve, reject) => {
+							reject("333");
+						});
+					},
+					(reason) => {}
+				)
+				.then(
+					(value) => {},
+					(reason) => {
+						console.log(reason); //"333"
+					}
+				);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			class Person {
+				constructor() {
+					this.set = new Set();
+				}
+				//访问arg属性时，调用该函数，要求必须有return语句
+				get arg() {
+					return this.set.size;
+				}
+				//修改arg属性时，调用该函数，要求必须有一个形参用来接收修改的值
+				set arg(value) {
+					this.set.add(value);
+				}
+			}
+
+			var p = new Person();
+			console.log(p.arg); //调用了对应的get函数，输出 0
+			p.arg = 123; //调用了对应的set函数
+			console.log(p.arg); //调用了对应的get函数，输出 1
+            p.arg = "Diana"; //调用了对应的set函数
+            console.log(p.arg); //调用了对应的get函数，输出 2
+
+			// class Person {
+			// 	name = "Diana";
+			// 	modifyName() {
+			// 		this.name = "Bella";
+			// 	}
+			// }
+		</script>
+	</body>
+</html>

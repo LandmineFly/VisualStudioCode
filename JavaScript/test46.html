@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+            //全局
+			var reg = /a([a-z]*)t/g;
+			var str = "arrangement argument";
+            var result = str.match(reg);
+            console.log(result); //["arrangement","argument"]
+
+            //非全局
+            var reg = /a([a-z]*)t/;
+			var str = "arrangement argument";
+            var result = str.match(reg);
+            console.log(result); //['arrangement', 'rrangemen']
+
+			// var result;
+			// while ((result = reg.exec(str)) != null) {
+			// 	console.log(result[0], result[1]);
+			// }
+
+			// var result = str.matchAll(reg);
+			// for (var item of result) {
+			// 	console.log(item[0], item[1]);
+			// }
+		</script>
+	</body>
+</html>

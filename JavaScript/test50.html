@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			class C {
+				//私有属性必须先在类中进行声明，否则报错
+				#attr1;
+				#attr2;
+				constructor(attr2) {
+					this.#attr2 = attr2;
+				}
+
+				#method1() {
+					console.log("private method");
+				}
+				method2() {
+					console.log(this.#attr1, this.#attr2);
+					this.#method1();
+				}
+			}
+
+			var c = new C(123);
+			c.method2(); //undefined 123
+			             //private method
+			// console.log(c.#attr1);
+			// 报错：Private field '#attr1' must be declared in an enclosing class
+			// c.#method1();
+			// 报错：Private field '#method1' must be declared in an enclosing class
+		</script>
+	</body>
+</html>

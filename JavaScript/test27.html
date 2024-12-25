@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var sy1 = Symbol("111");
+			var sy2 = Symbol("111");
+			console.log(sy1 === sy2); //false
+
+			var sy3 = Symbol.for();
+			var sy4 = Symbol.for();
+			console.log(sy3 === sy4); //true
+
+			for (var i in [1, 2, 3, 4]) {
+				console.log(typeof i);
+			}
+
+            //1.symbol值是在对象声明外部创建的，而且该symbol值被赋值给了另一个变量
+			var sy5 = Symbol("CNname");
+
+			var member = {
+				team: "Asoul",
+                //注意：这里进行了简写，sy5(){...} 等价于 sy5:function(){...}，下同
+				sy5() {
+					console.log("我是嘉然！");
+				},
+                
+                //2.该symbol值是在对象声明内部直接创建的，无法赋值给另一个变量
+                //注意：这里Symbol("ENname")要用[]括住
+				[Symbol("ENname")]() {
+					console.log("My name is Diana!");
+				},
+			};
+
+            //1.那么就可以直接通过该变量找到对应属性
+            member.sy5(); //我是嘉然！
+
+            //2.可以通过这个方法来获取所有在对象声明内部直接创建的、作为属性名存在的symbol值
+            //注意：对象声明外部创建的symbol值是不包含在该数组里的！
+            //因此这里数组的长度是1，只包含对象属性名中的 Symbol("ENname")
+            member[Object.getOwnPropertySymbols(member)[0]](); //My name is Diana!
+		</script>
+
+        <script>
+            var asoul = {
+                //属性值为对象
+                memberName:{
+                    name1:"diana",
+                    name2:"ava",
+                },
+                //属性值为函数，属性名是一个函数的返回值
+                ["teamName".toString()]:function()
+                {
+                    console.log("asoul")
+                },
+                //属性值为基本数据类型
+                gender:"female",
+            };
+            console.log(asoul)
+        </script>
+	</body>
+</html>

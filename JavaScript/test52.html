@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var obj = {
+				attr1: {
+					attr2: {
+						attr3: 123,
+					},
+				},
+			};
+
+            //先判断当前对象/属性是否存在，存在才继续访问，否则停止访问，并返回undefined
+            //其效果与传统写法完全一致
+            var value = obj?.attr1?.attr2?.attr3;
+            console.log(value); //123
+            var value = obj?.attr1?.attr3?.attr4
+            console.log(value); //undefined
+
+            //先判断当前对象/属性是否存在，存在才继续访问，否则停止访问
+            //这样万一要访问的对象/属性不存在，也不会报错，而是返回undefined
+			var value = obj && obj.attr1 && obj.attr1.attr2 && obj.attr1.attr2.attr3;
+			console.log(value); //123
+            var value = obj && obj.attr1 && obj.attr1.attr3 && obj.attr1.attr3.attr4;
+			console.log(value); //undefined
+		</script>
+	</body>
+</html>

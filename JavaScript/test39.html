@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//创建空Map
+			var m = new Map();
+
+			//添加键值对（键和值都可以是任意对象）
+			m.set("Diana", 18);
+			m.set("Bella", 19);
+			console.log(m);
+
+			//根据key获取value
+			console.log(m.get("Diana")); //18
+
+			//迭代Map对象
+			for (var item of m) {
+				//item是一个数组，有两个元素
+				//第一个元素是当前键值对的key，第二个元素是当前键值对的value
+				console.log(item[0], item[1]);
+			}
+			//Diana 18
+			//Bella 19
+
+			//根据key删除指定键值对
+			m.delete("Bella");
+
+			//清空该Map
+			m.clear();
+
+			//可以在创建Map时传入一个数组，该数组的每个元素都是数组，每个数组中又有两个元素
+			//第一个元素会被保存为key，第二个元素会被保存为value，每个数组都会被转换为一个键值对并添加到Map中
+			//这样就可以在创建Map对象时，先往其中添加一些键值对
+			var m = new Map([
+				["diana", 18],
+				["bella", 19],
+				["eva", 20],
+			]);
+			for (var item of m) {
+				console.log(item);
+				//['diana', 18]
+				//['bella', 19]
+				//['eva', 20]
+			}
+		</script>
+	</body>
+</html>

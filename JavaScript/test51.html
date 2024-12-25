@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var pro = Promise.all([
+				new Promise((resolve, reject) => {
+					setTimeout(() => {
+						resolve("promise1 succeeded");
+					}, 1000);
+				}),
+				new Promise((resolve, reject) => {
+					resolve("promise2 succeeded");
+				}),
+			]);
+			console.log(pro);
+
+            var pro = Promise.allSettled([
+				new Promise((resolve, reject) => {
+					setTimeout(() => {
+						resolve("promise1 succeeded");
+					}, 1000);
+				}),
+				new Promise((resolve, reject) => {
+					reject("promise2 failed");
+				}),
+			]);
+			console.log(pro);
+		</script>
+	</body>
+</html>

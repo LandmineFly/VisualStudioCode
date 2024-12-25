@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 本HTML页面因涉及引用其他js文件，因此必须在Live Server等环境下打开，若直接打开会显示跨域错误 -->
+		
+		<!-- 将输入的数据转交分线程处理，分线程处理完后再将数据传回主线程 -->
+		<h3>输入任意数字，返回n+1</h3>
+		<input type="text" id="input" />
+		<button id="btn">提交</button>
+		<p>结果：<span id="result"></span></p>
+		<script>
+			var input = document.getElementById("input");
+			var btn = document.getElementById("btn");
+			var result = document.getElementById("result");
+			//点击按钮时开始处理数据
+			btn.onclick = function () {
+				//通过value属性获取文本输入框的内容
+				var value = input.value;
+				//如果value值为空字符串，则数据处理中止并提示输入内容
+				if (value == "") {
+					result.innerHTML = "请输入内容！";
+				} else {
+					//新建一个Worker实例，将分线程js文件的路径作为参数传递
+					var worker = new Worker("test19.js");
+					//为worker添加一个从分线程接收数据的事件处理器
+					worker.onmessage = function (e) {
+						//通过事件对象的data属性可以获取到分线程返回的数据
+						console.log("主线程接收到分线程发送的数据 " + e.data);
+						//将结果显示在网页上
+						result.innerHTML = e.data;
+					};
+					//向分线程发送数据
+					worker.postMessage(value);
+					console.log("主线程向分线程发送数据 " + value);
+				}
+			};
+		</script>
+	</body>
+</html>

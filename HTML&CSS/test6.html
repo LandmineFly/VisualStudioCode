@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>测试六</title>
+
+        <style>
+            /* p+p{color:red} */
+            p~span{color:red}
+
+            div:last-child
+            {
+                height: 300px;
+                width: 300px;
+                background-color: hsla(200, 100%, 70%, 0.5);
+            }
+        </style>
+	</head>
+
+	<body>
+        <div>
+            <p>111</p>
+            <p>222</p><!-- seleted -->
+            <span>333</span>
+        </div>
+
+        <br>
+
+        <div>
+            <p>111</p>
+            <span>333</span>
+            <p>222</p><!-- not seleted -->
+        </div>
+
+        <br>
+
+        <div>
+            <p>111</p>
+            <span>222</span><!-- seleted -->
+            <p>333</p>
+            <span>444</span><!-- seleted -->
+            <p>
+                <span>555</span><!-- not seleted -->
+            </p>
+        </div>
+
+        <div>
+            
+        </div>
+    </body>
+</html>

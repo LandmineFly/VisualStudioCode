@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function fun1([arg1, arg2, ...other]) {
+				console.log(arg1); //1
+				console.log(arg2); //2
+				console.log(other); //[3,4,5]
+			}
+			fun1([1, 2, 3, 4, 5]);
+
+			function fun2({ attr1, attr2, ...other }) {
+				console.log(attr1); //111
+				console.log(attr2); //222
+				console.log(other); //{attr3: 333, attr4: 444}
+			}
+			fun2({
+				attr1: 111,
+				attr2: 222,
+				attr3: 333,
+				attr4: 444,
+			});
+
+			var obj1 = { attr1: 111 };
+			var obj2 = { attr2: 222 };
+			var obj3 = { attr3: 333 };
+
+			var obj4 = { ...obj1, ...obj2, ...obj3 };
+			console.log(obj4); //{"attr1": 111, "attr2": 222, "attr3": 333}
+
+            //普通分组
+            var str = '<a href="https://www.baidu.com/">Baidu</a>';
+            var reg = /href="(.*)>(Baidu)/;
+            var result = reg.exec(str)
+            console.log(result); //['href="https://www.baidu.com/">Baidu','https://www.baidu.com/','Baidu']
+
+            // 给分组命名：在分组括号内的最前面加上 ?<name>
+            var reg = /href="(?<url>.*)>(?<name>Baidu)/;
+            var result = reg.exec(str);
+            // result数组中的元素与不命名时的结果是一致的
+            console.log(result); //['href="https://www.baidu.com/">Baidu','https://www.baidu.com/','Baidu']
+            // 不同之处就是在result数组对象中多定义了一个groups属性，该属性是一个对象
+            // 并以 分组名：分组文本 的形式保存了各个分组的内容
+            console.log(result.groups); //{'url': 'https://www.baidu.com/','name': 'Baidu'}
+
+            var str = `
+            <div>
+                <p>You are totally right.</p>
+            </div>`
+            // . 默认是不匹配换行符的，因此下面的匹配结果为 null
+            var reg = /<div>(.*)<p>(.*)<\/p>/;
+            var result = reg.exec(str);
+            console.log(result); // null
+            // 还要在前面多加一个表示空白字符的 \s
+            var reg = /<div>\s(.*)<p>(.*)<\/p>/;
+            var result = reg.exec(str);
+            console.log(result[2]); // You are totally right.
+
+            // 使用 s 模式后，. 也能匹配换行符了，无需加上 \s
+            var reg = /<div>(.*)<p>(.*)<\/p>/s;
+            var result = reg.exec(str);
+            console.log(result[2]); // You are totally right.
+		</script>
+	</body>
+</html>

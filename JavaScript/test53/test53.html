@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 本HTML页面因涉及引用其他js文件，因此必须在Live Server等环境下打开，若直接打开会显示跨域错误 -->
+		
+		<button id="btn">111</button>
+		<script>
+			var btn = document.getElementById("btn");
+			// 只有在点击按钮时，才会导入对应模块
+			btn.addEventListener("click", function () {
+				import("./test53.js").then(
+					//因为对应模块的module对象会在被需要时传递到 funcResolve 中
+					//所以回调函数 funcResolve 的参数名约定是 module
+					(module) => {
+						module.method();
+					}
+					//无需用到回调函数 funcReject，也就不绑定了
+				);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+        <style>
+            .outer
+            {
+                border: 3px solid red;
+                overflow: hidden;
+            }
+            .inner
+            {
+                width: 100px;
+                height: 100px;
+                background-color: #6cf;
+                float: left;
+            }
+            .box1
+            {
+                width: 100px;
+                height: 100px;
+                background-color: palegoldenrod;
+                float: left;
+            }
+
+            .clearfix::before,
+            .clearfix::after
+            {
+                content: '';
+                display: table;
+                clear: both;
+            }
+        </style>
+	</head>
+
+	<body>
+       <div class="box1"></div> 
+       <div class="outer">
+            <div class="inner"></div>
+        </div>
+        
+    </body>
+</html>

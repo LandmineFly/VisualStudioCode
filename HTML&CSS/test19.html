@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      /* 地板 */
+      .box1 {
+          height: 500px;
+          border-bottom: 5px solid black;
+          /* 开启BFC */
+          overflow: hidden;
+      }
+
+      /* 球 */
+      .box1 div {
+          height: 100px;
+          width: 100px;
+          border-radius: 50%;
+          float: left;
+
+      }
+
+      .box2 {
+          background-color: #6cf;
+          animation: drop 3s 0.1s ease-in infinite alternate;
+      }
+
+      .box3 {
+          background-color: green;
+          animation: drop 3s 0.2s ease-in infinite alternate;
+      }
+
+      .box4 {
+          background-color: red;
+          animation: drop 3s 0.3s ease-in infinite alternate;
+      }
+
+      .box5 {
+          background-color: blue;
+          animation: drop 3s 0.4s ease-in infinite alternate;
+      }
+
+      .box6 {
+          background-color: grey;
+          animation: drop 3s 0.5s ease-in infinite alternate;
+      }
+
+      @keyframes drop {
+
+          /* 第一次下降 */
+          from {
+              margin-top: 0;
+          }
+
+          /* 第一次、第二次上升 */
+          20%,
+          60% {
+              margin-top: 400px;
+              /* 可以在关键帧内改变 animation-timing-function 的值*/
+              animation-timing-function: ease-out;
+          }
+
+          /* 第二次下降 */
+          40% {
+              margin-top: 200px;
+              animation-timing-function: ease-in;
+          }
+
+          /* 第三次下降 */
+          80% {
+              margin-top: 300px;
+              animation-timing-function: ease-in;
+          }
+
+          to {
+              margin-top: 400px;
+          }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box1">
+      <div class="box2"></div>
+      <div class="box3"></div>
+      <div class="box4"></div>
+      <div class="box5"></div>
+      <div class="box6"></div>
+      <div class="box7"></div>
+    </div>
+  </body>
+</html>

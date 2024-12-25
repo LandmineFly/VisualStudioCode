@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// ES5写法
+			function Person1(name, age) {}
+			//Person1构造函数对象中的属性，其实例对象不能访问
+			//称这些属性为Person1的静态属性
+			Person1.arg1 = 123;
+			Person1.arg2 = function () {
+				console.log("arg2");
+			};
+
+			console.log(Person1.arg1); //123
+			Person1.arg2(); //arg2
+
+			var p1 = new Person1("Diana", 18);
+			console.log(p1.arg1); //undefined
+			// p1.arg2(); //报错：p1.arg2 is not a function
+
+            
+			// ES6写法，与上面完全等价
+			class Person2 {
+                //使用static关键字声明静态属性
+				static arg1 = 123;
+				static arg2() {
+					console.log("arg2");
+				}
+			}
+
+			console.log(Person2.arg1); //123
+			Person2.arg2(); //arg2
+
+			var p2 = new Person2("Bella", 19);
+			console.log(p2.name, p2.age);
+			// p2.eat(); //报错：p2.arg2 is not a function
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function fun1(args1, args2, ...other) {
+				console.log(other);
+			}
+			fun1(1, 2, 3, 4, 5); //[3,4,5]
+			fun1(1, 2); //[]
+		</script>
+		<script>
+			//1.将数组的每个元素拆分出来再传参
+			var arr1 = [1, 2, 3, 4, 5];
+			function fun1() {
+				console.log(arguments.length);
+			}
+			//相当于fun(1,2,3,4,5)
+			fun1(...arr1); //5
+
+			//2.进行数组拼接
+			var arr2 = [1, 2, 3];
+			var arr3 = [4, 5, 6];
+			//相当于[1,2,3,4,5,6]
+			var arrPlus = [...arr2, ...arr3];
+			console.log(arrPlus); //[1,2,3,4,5,6]
+
+			//3.把伪数组转换为真正的数组
+			//divs是一个伪数组
+			var divs = document.getElementsByTagName("div");
+			//divsArr是一个真正的数组
+			var divsArr = [...divs];
+			//值得注意的是，将divs转换成数组divsArr后，divs仍是动态更新的集合
+			//但是divsArr就变成了一个静态数组，其元素与转换时divs的元素相同
+		</script>
+	</body>
+</html>

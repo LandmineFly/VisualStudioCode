@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 1.BigInt的声明：在数字后加上n即可
+			var bigInt = 1145141919810n;
+			console.log(bigInt); //1145141919810n
+			console.log(typeof bigInt); //bigint
+
+			// 2.int转成BigInt
+			var int = 114514;
+			var bigInt = BigInt(int);
+			console.log(bigInt); //114514n
+			console.log(typeof bigInt); //bigint
+
+			// 3.BigInt之间可以直接运算
+			//但是int与BigInt不能直接运算，要先把int转成BigInt
+			console.log(123n + 1n); //124n
+			// console.log(123n + 1); //报错
+			console.log(123n + BigInt(1)); //124n
+		</script>
+	</body>
+</html>

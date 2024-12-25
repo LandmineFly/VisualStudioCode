@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// function* generator(arg) {
+			// 	//第一段
+            //     return 1;
+			// 	let tmp = yield "1";
+                
+            //     //第二段
+            //     console.log(tmp);
+			// }
+            // let iterator = generator();
+            // console.log(iterator.next("3")); //{value:1, done:true}
+            // console.log(iterator.next("4")); //{value:undefined, done:true}
+
+			function* generator(arg) {
+				//通过generator传入的参数在整个函数体中都可用
+				console.log(arg); //"444"
+				//通过next传入的参数在上一个yield语句执行完后才可用
+				let arg1 = yield "111";
+
+				console.log(arg1); //"666"
+				let arg2 = yield "222";
+
+				console.log(arg2); //"777"
+				let arg3 = yield "333";
+
+				console.log(arg3); //"888"
+			}
+			//返回一个迭代器
+			let iterator = generator("444");
+
+			//第1次调用next();
+			//传入参数无意义
+			//执行第1段代码，返回值的value属性值是第1个yield的"111"
+			let result1 = iterator.next("555");
+			console.log(result1); //{value:"111",done:false}
+
+			//第2次调用next()
+			//传入参数被赋值给第1个yield左边的变量
+			//执行第2段代码，返回值的value属性值是第2个yield的"222"
+			let result2 = iterator.next("666");
+			console.log(result2); //{value:"222",done:false}
+
+			//第3次调用next()
+			//传入参数被赋值给第2个yield左边的变量
+			//执行第3段代码，返回值的value属性值是第3个yield的"222"
+			let result3 = iterator.next("777");
+			console.log(result3); //{value:"333",done:false}
+
+			//第4次调用next()
+			//传入参数被赋值给第3个yield左边的变量
+			//执行第4段代码，返回值的value属性值是undefined,done属性值是true
+			let result4 = iterator.next("888");
+			console.log(result4); //{value:undefined,done:true}
+		</script>
+	</body>
+</html>

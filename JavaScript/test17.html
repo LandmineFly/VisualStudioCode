@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function fun1()
+        // {
+        //     var a = 1;
+        //     //闭包
+        //     function aPlus()
+        //     {
+        //         console.log(++a);
+        //     }
+        //     return aPlus;
+        // }
+        // //将闭包赋值给了fun
+        // var fun = fun1();
+        // //原本在执行完fun1之后，其局部变量a就会被销毁
+        // //但是因为闭包中引用了a，所以在这个闭包死亡前，a不会被销毁
+        // fun(); //2
+        (function fun1(w)
+        {
+            //a是fun1的局部变量，外部不能直接访问
+            var a = 1;
+            //闭包
+            function aValue()
+            {
+                return a;
+            }
+            //闭包
+            function aPlus()
+            {
+                a++;
+            }
+            //将这两个闭包添加到window的属性中
+            //就可以对外暴露a的值和对a进行+1的操作
+            w.A = {
+                aValue:aValue,
+                aPlus:aPlus
+            }
+        })(window);
+        var A = fun1();
+        console.log(A.aValue()); //1
+        A.aPlus();
+        console.log(A.aValue()); //2
+    </script>
+</body>
+</html>

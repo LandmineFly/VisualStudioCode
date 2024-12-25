@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+        <style>
+            .box1
+            {
+                height: 800px;
+                width: 800px;
+                background-color: grey;
+                position: relative;
+            }
+            .box2
+            {
+                height: 200px;
+                width: 200px;
+                animation-name: box2_ani;
+                animation-duration: 2s;
+                animation-direction:alternate;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                background-color: #6cf;
+                position: absolute;
+            }
+            /* box2_ani 是关键帧的名字 */
+            @keyframes box2_ani {
+                from {
+                    left:0;
+                }
+                50% {
+                    height: 300px;
+                    width: 300px;
+                }
+                to {
+                    left:600px;
+                }
+            }
+        </style>
+	</head>
+	<body>
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </body>
+</html>

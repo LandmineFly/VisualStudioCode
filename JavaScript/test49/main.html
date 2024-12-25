@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 本HTML页面因涉及引用其他js文件，因此必须在Live Server等环境下打开，若直接打开会显示跨域错误 -->
+		
+        <!-- import语句只能在声明了 type="module" 的 script 标签中使用，否则报错-->
+		<script src="./test_main.js" type="module"></script>
+		<script type="module">
+			import * as m1 from "./test_main.js"
+		</script>
+	</body>
+</html>

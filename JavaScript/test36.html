@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// ES5写法
+			function Person1(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			Person1.prototype.eat = function () {
+				console.log("吃饭1");
+			};
+
+			function Student1(name, age, grade) {
+				//调用父类构造函数
+				Person1.call(this, name, age);
+				this.grade = grade;
+			}
+			//设置原型链
+			Student1.prototype = new Person1();
+			Student1.prototype.constructor = Person1;
+			//设置子类独有方法
+			Student1.prototype.study = function () {
+				console.log("学习");
+			};
+
+			var s1 = new Student1("Diana", 18, 90);
+			console.log(s1.name, s1.age, s1.grade); //Diana 18 90
+			s1.eat(); //吃饭
+			s1.study(); //学习
+
+			//重写父类方法
+			Student1.prototype.eat = function () {
+				console.log("在食堂吃饭");
+			};
+			s1.eat(); //在食堂吃饭
+
+            
+			// ES6写法，与上面完全等价
+			class Person2 {
+				constructor(name, age) {
+					this.name = name;
+					this.age = age;
+				}
+				eat() {
+					console.log("吃饭");
+				}
+			}
+
+			//使用extends关键字声明父类
+			//注意：JS只支持单继承
+			class Student2 extends Person2 {
+				constructor(name, age, grade) {
+					//使用super()调用父类构造函数
+					//其效果与Person2.call(this,name,age)完全相同
+					super(name, age);
+					this.grade = grade;
+				}
+				study() {
+					console.log("学习");
+				}
+				//重写父类方法
+				eat() {
+					console.log("在食堂吃饭");
+				}
+			}
+
+			var s2 = new Student2("Bella", 19, 92);
+			console.log(s2.name, s2.age, s2.grade); //Bella 19 92
+			s2.study(); //学习
+			s2.eat(); //在食堂吃饭
+		</script>
+	</body>
+</html>

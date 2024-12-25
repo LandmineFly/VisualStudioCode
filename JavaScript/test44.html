@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function mission_1() {
+				return new Promise((resolve, reject) => {
+					resolve("mission_1 succeeded");
+				});
+			}
+			function mission_2() {
+				return new Promise((resolve, reject) => {
+					reject("mission_2 failed");
+				});
+			}
+			function mission_3() {
+				return new Promise((resolve, reject) => {
+					resolve("mission_3 succeeded");
+				});
+			}
+
+			async function asyncFun() {
+				try {
+					var result_1 = await mission_1();
+					console.log(result_1);
+				} catch (e) {
+					console.log(e);
+				}
+				try {
+					var result_2 = await mission_2();
+					console.log(result_2);
+				} catch (e) {
+					console.log(e);
+				}
+				try {
+					var result_3 = await mission_3();
+					console.log(result_3);
+				} catch (e) {
+					console.log(e);
+				}
+			}
+
+			asyncFun();
+			//mission_1 succeeded
+			//mission_2 failed
+			//mission_3 succeeded
+
+			var diana = {
+				name: "diana",
+				age: 18,
+				isMale: true,
+			};
+			console.log(Object.keys(diana));
+			console.log(Object.values(diana));
+			console.log(Object.entries(diana));
+		</script>
+	</body>
+</html>

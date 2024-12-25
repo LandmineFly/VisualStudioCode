@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//1. Number.EPSILON 是 JavaScript 所能表示的最小精度
+			console.log(Number.EPSILON); //2.220446049250313e-16
+
+			//2. 二进制、八进制、十六进制
+			var a = 0b10;
+			var b = 0o77;
+			var c = 0xff;
+			console.log(a, b, c); //2 63 255
+
+			//3. Number.isFinite() 检测一个数值是否是有穷数
+			console.log(Number.isFinite(2)); //true
+			console.log(Number.isFinite(2 / 0)); //false
+
+			//4. Number.isNaN() 检测一个数值是否为NaN
+			console.log(Number.isNaN(123));
+			console.log(Number.isNaN(NaN));
+
+			//5. Number.parseInt() 和 Number.parseFloat()
+			//解析一个字符串并返回其中的有效整数/浮点数值
+			//这两个方法原本是直接调用的，现在也作为Number的方法，目的就是提高统一性
+			//当然，仍然可以直接调用
+			console.log(Number.parseInt("123")); //123
+			console.log(Number.parseFloat("3.1415aaa")); //3.1415
+			console.log(Number.parseInt("aaa123")); //NaN
+
+			//6. Number.isInteger() 判断一个数值是否为整数
+			console.log(Number.isInteger(123)); //true
+			console.log(Number.isInteger(123.12)); //false
+
+			//7. Math.trunc() 将一个数值的小数部分去掉并返回
+			console.log(Math.trunc(123.12)); //123
+
+			//8. Math.sign() 如果数值是正数，则返回1；如果是0，则返回0；如果是负数，则返回-1
+			console.log(Math.sign(114)); //1
+			console.log(Math.sign(0)); //0
+			console.log(Math.sign(-514)); //-1
+
+			//1. Object.is() 判断两个对象是否完全相等
+			//该方法与全等运算符(===)很相似
+			//但当两个对象都是NaN时，该方法能返回true，而 === 会返回 false
+			console.log(Object.is(123, 123)); //true
+			console.log(Object.is(new Set(), new Set())); //false
+			console.log(Object.is(NaN, NaN)); //true
+
+			//2. Object.assign() 合并两个对象，并将合并后的对象返回
+			//当两个对象有同名属性时，后者会覆盖前者
+			var o1 = { name: "Diana", age: 18 };
+			var o2 = { name: "Bella", grade: 90 };
+			console.log(Object.assign(o1, o2));
+			//{name: 'Bella', age: 18, grade: 90}
+
+            //3. Object.setPrototypeOf() 和 Object.getPrototypeof()
+            //设置 或 获取 指定对象的原型对象
+            //一般不推荐使用
+            var o3 = {value:111};
+            var o4 = {value:222};
+            //将o3的原型对象设置为o4
+            Object.setPrototypeOf(o3,o4);
+            //获取o3的原型对象
+            console.log(Object.getPrototypeOf(o3)); //{value: 222}
+		</script>
+	</body>
+</html>
